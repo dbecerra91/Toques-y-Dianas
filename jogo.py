@@ -53,16 +53,16 @@ os.system('clear')
 # Regras do jogo
 print(l,'\n',tit)
 print(l,'\n')
-print('A ideia do jogo é adivinhar um número que é gerado pelo sistema de')
-print('forma aleatória, esse número é de 4 digitos e elas não se repetem.')
-print('Para adivinhar o número você deve utilizar um máximo de 7 chutes')
-print('certos, isto é, cada chute deve ser um número de 4 digitos distintas,')
-print('em cada chute você terá informação em forma de toques e dianas, que')
-print('vai ajudar você a adivinhar o número.\n')
-print('Cada toque indica que no seu chute tem um dígito certo na posição')
-print('errada.\n')
-print('Cada diana indica que no seu chute tem um dígito certo na posição')
-print('certa.\n')
+print('''A ideia do jogo é adivinhar um número que é gerado pelo sistema
+de forma aleatória, esse número é de 4 digitos e elas não se repetem.
+Para adivinhar o número você deve utilizar um máximo de 7 chutes
+certos, isto é, cada chute deve ser um número de 4 digitos distintas,
+em cada chute você terá informação em forma de toques e dianas, que
+vai ajudar você a adivinhar o número.\n
+Cada toque indica que no seu chute tem um dígito certo na posição
+errada.\n
+Cada diana indica que no seu chute tem um dígito certo na posição
+certa.\n''')
 input('Enter para continuar... ')
 os.system('clear')
 for cont in range(1, 8):
