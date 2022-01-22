@@ -2,19 +2,6 @@ from random import randint
 import os
 from time import sleep
 l, tit = '-'*20, 'Regras do jogo'
-# Número random para ser adivinhado
-
-a = randint(1,9)
-b = a
-while b == a:
-    b = randint(0,9)
-c = b
-while c == a or c == b:
-    c = randint(0,9)
-d = c
-while d == c or d == b or d == a:
-    d = randint(0,9)
-ran = [a, b, c, d]
 
 # Funções a serem utilizadas
 
@@ -28,15 +15,28 @@ def verificacao(num):
     N = particao(num)
     t = 1
     while log1 or log2:
-        if t == 3:
-            print('\nVocê está de sacanagem comigo, né?')
-            sleep(1)
-        elif t == 4:
-            print('\nMais um chute errado e acaba o jogo!')
-            sleep(1)
-        elif t == 5:
-            print('\nQue pena, o número era {}'.format(1000 * a + 100 * b + 10 * c + d))
-            exit()
+        if t == 2:
+            print('\nNo próximo chute errado, será assignado um número aleatório')
+            sleep(2)
+        elif t == 3:
+            x = randint(1,9)
+            y = x
+            while y == x:
+                y = randint(0,9)
+            z = y
+            while z == x or z == y:
+                z = randint(0,9)
+            w = z
+            while w == z or w == y or w == x:
+                w = randint(0,9)
+            num = 1000 * x + 100 * y + 10 * z + w
+            N = particao(num)
+            print('''
+Foi assignado o seguinte número de forma aleatória:
+
+{}
+'''.format(num))
+            sleep(2)
         if num < 1000 or num > 9999:
             num = int(input('Digite um numero de 4 cifras: '))
             N = particao(num)
@@ -65,6 +65,38 @@ Cada diana indica que no seu chute tem um dígito certo na posição
 certa.\n''')
 input('Enter para continuar... ')
 os.system('clear')
+
+n = int(input('''Opções para jogar
+
+1. Deseja adivinhar um número aleatório gerado pela máquina?
+2. Deseja digitar um numero para outra pessoa adivinhar
+
+Digite sua opção: '''))
+while (n in [1, 2]) == False :
+    if n < 1 or n > 2 :
+        n = int(input('Digite um número entre 1 e 2: '))
+
+if n == 1 :
+    a = randint(1,9)
+    b = a
+    while b == a:
+        b = randint(0,9)
+    c = b
+    while c == a or c == b:
+        c = randint(0,9)
+    d = c
+    while d == c or d == b or d == a:
+        d = randint(0,9)
+    ran = [a, b, c, d]
+    print('Um número aleatório foi gerado.')
+    sleep(2)
+    os.system('clear')
+else :
+    ran = int(input('Digite um número para outra pessoa adivinhar: '))
+    ran = verificacao(ran)
+    ran = particao(ran)
+    os.system('clear')
+
 for cont in range(1, 8):
     if cont < 7:
         chute = int(input('Digite o {}o chute: '.format(cont)))
